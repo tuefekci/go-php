@@ -117,3 +117,81 @@ All code in this repository is covered by the terms of the MIT License, the full
 [Context.Eval]: https://godoc.org/github.com/deuill/go-php/engine#Context.Eval
 [NewValue]:     https://godoc.org/github.com/deuill/go-php/engine#NewValue
 [NewReceiver]:  https://godoc.org/github.com/deuill/go-php/engine#NewReceiver
+
+# TODO AREA
+## Installation
+    
+// TODO: Figure out which package are really needed. but it works when all of them are there
+// TODO: Check if all of this still works out after all the changes!!!
+
+### Windows
+Just use docker to build your application or the subsystem, because i have no idea how to get php-embed on windows without building the complete php source which kinda sucks.
+If there is a Windows version of php-embed, you should be able to use it but you also need g++ etc. to build the go-php package. 
+
+If there is a Windows Developer out there who knows how to solve it, just push an edit here or add an issue with explanations, and i will try to help with the write down. Thanks!
+
+### OSX
+Your steps should be similar to the Linux version.
+You probably need to adapt the tags/etc. to your system but its untested because i dont have access to an up2date osx system. So to make it easyer just use Docker.
+
+
+### Linux/Debian/Ubuntu
+
+We need to use ppa:ondrej/php for older PHP-Versions which im using for years and never had problems, but rules for ppa´s apply! So if you wand to be extra safe build in a container or vm!
+
+#### PHP 5.6 // TODO: Test if building 5.6 still works!
+```bash
+sudo apt-add-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install php5.6-embed
+sudo apt-get install libphp5.6-embed
+sudo apt-get install php5.6-dev
+```
+
+#### PHP 7.0 // TODO: Check if removing 7.0 makes sense and if it does, test it!
+```bash
+sudo apt-add-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install php7.0-embed
+sudo apt-get install libphp7.0-embed
+sudo apt-get install php7.0-dev
+```
+
+#### PHP 7.4
+```bash
+sudo apt-add-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install libphp7.4-embed
+sudo apt-get install php7.4-dev
+```
+
+#### PHP 8
+```bash
+sudo apt-add-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install libphp8.0-embed
+sudo apt-get install php8.0-dev
+```
+
+### Tags
+- php5
+- php7  
+- php7.4
+- php8
+
+- debian
+- static // TODO: Check if this works?
+
+#### Then, install the package:
+```bash
+go get github.com/tuefekci/go-php -tags='debian php7'
+```
+
+### Docker
+// TODO: There is already a Docker file from deuill it probably needs to be updated to the latest version.
+
+### Build
+    
+```bash
+go build -tags='debian php7' your-main.go
+```
